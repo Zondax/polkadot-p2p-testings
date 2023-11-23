@@ -1,0 +1,23 @@
+{
+  "name": "polkadot-testing",
+  "version": "1.0.0",
+  "description": "This is a proof of concept for a testing the different Polkadot implementation.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lola Rigaut-Luczak <lola@zondax.ch>",
+  "license": "MIT",
+  "dependencies": {
+    "@chainsafe/libp2p-noise": "^13.0.2",
+    "@chainsafe/libp2p-yamux": "^5.0.0",
+    "@libp2p/mplex": "^9.0.10",
+    "@libp2p/peer-id-factory": "^3.0.5",
+    "@libp2p/tcp": "^8.0.9",
+    "@libp2p/websockets": "^7.0.9",
+    "@multiformats/multiaddr": "^12.1.7",
+    "libp2p": "^0.46.16"
+  }
+}
