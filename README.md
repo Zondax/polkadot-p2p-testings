@@ -1,6 +1,6 @@
 # Polkadot network conformance testing
 
-This is a proof of concept for a testing the different Polkadot implementation.
+This is a proof of concept for a testing the different Polkadot implementations. The program takes advantage of the 
 
 ## Notes
 
@@ -12,5 +12,5 @@ Even if it run locally.
 ### Start docker container
 
 ```
-$ docker -t polakdot -f Dockerfile.polkadot .
+$ docker build -t polakdot -f Dockerfile.polkadot .
 ```

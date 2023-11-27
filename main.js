@@ -34,7 +34,7 @@ async function main() {
     console.log('listening on addresses:')
     node.getMultiaddrs().forEach((ma) => console.log(ma.toString()))
 
-    const targetNode = multiaddr('/ip4/127.0.0.1/tcp/30333/p2p/12D3KooWKhoAeaMcMRXeY6oPvSJWH3YKg8m9Ad8xnGUey3N6zaSx')
+    const targetNode = multiaddr('/ip4/127.0.0.1/tcp/30333/p2p/12D3KooWAu9cGVsqrxRf5cDfAJQQjP7Gn4J1KTGtdjhWRb5cu5WL')
     
     const conn = await node.dial(targetNode)
 
