@@ -1,6 +1,6 @@
-# Polkadot network conformance testing
+# Polkadot P2P testing proof-of-concept
 
-This is a proof of concept for a testing the different Polkadot implementations. The program takes advantage of the 
+This is a proof of concept take advantage of the already standard way of communicating with nodes : P2P mesages. Using libp2p we could feed a node with blocks, transactions, or even send incorrect transactions and verify their behaviors accross all the implementations. This doesn't require modifying the node in anyway and allow a good granularity of tests. Our PoC, just connect to a polkadot node and tests its ping interfaces (which is part of the spec).
 
 ## Notes
 
@@ -13,4 +13,14 @@ Even if it run locally.
 
 ```
 $ docker build -t polakdot -f Dockerfile.polkadot .
+$ docker run -p 30333:30333 polkadot
+```
+
+### Run the test
+
+In a new terminal, you can run the javascript program. Using `DEBUG=*` shows the libp2p logs in detail to have a better following of the underlying operations.
+
+```
+$ npm install
+$ DEBUG=* npm start
 ```
