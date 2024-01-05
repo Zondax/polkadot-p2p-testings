@@ -12,8 +12,8 @@ Even if it run locally.
 ### Start docker container
 
 ```
-$ docker build -t polakdot -f Dockerfile.polkadot .
-$ docker run -p 30333:30333 polkadot
+$ docker build -t polkadot -f Dockerfile.polkadot .
+$ docker run -d -p 30333:30333 polkadot
 ```
 
 ### Run the test

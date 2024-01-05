@@ -1,12 +1,10 @@
 {
   "name": "polkadot-testing",
   "version": "1.0.0",
-  "description": "This is a proof of concept for a testing the different Polkadot implementation.",
-  "main": "main.js",
+  "description": "This is a proof of concept for a testing the different Polkadot implementations.",
   "type": "module",
   "scripts": {
-    "start": "node main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ava"
   },
   "author": "Lola Rigaut-Luczak <lola@zondax.ch>",
   "license": "MIT",
@@ -18,6 +16,13 @@
     "@libp2p/tcp": "^8.0.9",
     "@libp2p/websockets": "^7.0.9",
     "@multiformats/multiaddr": "^12.1.7",
-    "libp2p": "^0.46.16"
+    "libp2p": "^0.46.16",
+    "ava": "^5.0.0"
+  },
+	"ava": {
+		"files": [
+        "!tests/utils.js",
+        "!tests/setup.js"
+    ]
   }
 }
