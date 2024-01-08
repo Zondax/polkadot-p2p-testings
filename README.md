@@ -11,16 +11,23 @@ Even if it run locally.
 
 ### Start docker container
 
+#### Polkadot
 ```
 $ docker build -t polkadot -f Dockerfile.polkadot .
 $ docker run -d -p 30333:30333 polkadot
 ```
 
+#### Gossamer
+```
+$ docker build -t gossamer -f Dockerfile.gossamer .
+$ docker run -d -p 30333:30333 gossamer
+```
+
 ### Run the test
 
-In a new terminal, you can run the javascript program. Using `DEBUG=*` shows the libp2p logs in detail to have a better following of the underlying operations.
+In a new terminal, you can run the javascript program. Using `DEBUG=libp2p,libp2p:*` shows the libp2p logs in detail to have a better following of the underlying operations.
 
 ```
 $ npm install
-$ DEBUG=* npm start
+$ DEBUG=libp2p,libp2p:* npm start
 ```

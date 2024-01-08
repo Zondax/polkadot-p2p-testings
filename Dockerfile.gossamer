@@ -1,0 +1,26 @@
+##### BUILDER #####
+FROM golang:1.21 as builder
+
+WORKDIR /usr/src
+
+RUN apt-get update && apt-get install -y protobuf-compiler build-essential wget
+
+RUN wget https://github.com/ChainSafe/gossamer/archive/refs/tags/v0.8.0.tar.gz
+RUN tar -xzvf v0.8.0.tar.gz
+RUN cd gossamer-0.8.0 && make gossamer
+
+##### RUNNER #####
+FROM ubuntu:latest
+
+LABEL author="Lola Rigaut-Luczak <lola@zondax.ch>"
+
+WORKDIR /usr/src
+COPY --from=builder /usr/src/gossamer-0.8.0/bin/gossamer /usr/local/bin/gossamer
+COPY --from=builder /usr/src/gossamer-0.8.0/chain/westend-dev /usr/src
+
+# Init dev net
+RUN gossamer --chain /usr/src/westend-dev-spec-raw.json --base-path /tmp/wow/ init
+
+EXPOSE 30333
+
+CMD ["gossamer", "--chain", "/usr/src/westend-dev-spec-raw.json", "--base-path", "/tmp/wow/", "--node-key", "06c5b8ff1c930041b5f53f486cddf0ba8123ed02c1e5d72600f24e3e4e7c54fe", "--port", "30333"]

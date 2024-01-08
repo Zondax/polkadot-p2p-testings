@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  polkadot:
+    image: polkadot
+    build:
+      context: ../
+      dockerfile: Dockerfile.polkadot
+    init: true
+    volumes:
+      - db:/tmp/wow/
+    ports:
+      - 9944:9944
+    healthcheck:
+      test: ["CMD-SHELL" , "curl -s -H \"Content-Type: application/json\" -d '{\"method\":\"chain_getBlockHash\",\"params\":[10],\"id\":1,\"jsonrpc\":\"2.0\"}' http://polkadot:9944 | jq -e '.result != null' && pkill polkadot"]
+      interval: 60s
+      retries: 5
+      start_period: 30s # Adjust start period to the time you need to generate 300 blocks
+      timeout: 10s
+  
+  export:
+    image: polkadot
+    build:
+      context: ../
+      dockerfile: Dockerfile.polkadot
+    depends_on:
+      polkadot:
+        condition: service_completed_successfully
+    command: ./polkadot export-blocks --dev --base-path /tmp/wow/ --from 0 --to 10 data/dump.json
+    volumes:
+      - db:/tmp/wow/
+      - ./data:/usr/src/data
+
+volumes:
+  db:

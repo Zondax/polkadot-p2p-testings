@@ -1,7 +1,9 @@
 FROM ubuntu:latest
+LABEL author="Lola Rigaut-Luczak <lola@zondax.ch>"
 
 RUN apt-get update
-RUN apt-get -y install wget
+# curl and jq are only used for checking healthy service
+RUN apt-get -y install wget curl jq 
 
 WORKDIR /usr/src
 
@@ -16,4 +18,4 @@ RUN chmod +x polkadot-prepare-worker
 
 EXPOSE 30333
 
-CMD ["./polkadot", "--dev", "--node-key", "06c5b8ff1c930041b5f53f486cddf0ba8123ed02c1e5d72600f24e3e4e7c54fe", "--port", "30333"]
+CMD ["./polkadot", "--rpc-external", "--dev", "--base-path", "/tmp/wow/", "--node-key", "06c5b8ff1c930041b5f53f486cddf0ba8123ed02c1e5d72600f24e3e4e7c54fe", "--port", "30333"]

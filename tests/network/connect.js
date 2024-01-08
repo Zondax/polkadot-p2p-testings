@@ -8,7 +8,7 @@ import { createEd25519PeerId } from '@libp2p/peer-id-factory'
 import { getMultiaddr } from '../utils.js'
 
 test.afterEach.always(async t => {
-	const { node } = t.context
+    const { node } = t.context
 
     await node.stop()
 })

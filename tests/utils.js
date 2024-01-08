@@ -4,9 +4,9 @@ import { noise } from '@chainsafe/libp2p-noise'
 import { yamux } from '@chainsafe/libp2p-yamux'
 import { mplex } from '@libp2p/mplex'
 import { tcp } from '@libp2p/tcp'
-import { webSockets } from '@libp2p/websockets'
 import { createEd25519PeerId } from '@libp2p/peer-id-factory'
 import { pingService } from 'libp2p/ping'
+import { identifyService } from 'libp2p/identify'
 
 async function startNode () {
     const peerId = await createEd25519PeerId()
@@ -15,11 +15,15 @@ async function startNode () {
         transports: [tcp()],
         streamMuxers: [yamux(), mplex()],
         connectionEncryption: [noise()],
+        connectionManager: {
+            minConnections: 1, // to avoid auto dial (default is 50)
+        },
         addresses: {
             listen: ['/ip4/0.0.0.0/tcp/0']
         },
         services: {
             ping: pingService(),
+            identify: identifyService(),
         },
         peerId,
     })

@@ -16,13 +16,14 @@
     "@libp2p/tcp": "^8.0.9",
     "@libp2p/websockets": "^7.0.9",
     "@multiformats/multiaddr": "^12.1.7",
-    "libp2p": "^0.46.16",
-    "ava": "^5.0.0"
+    "ava": "^5.0.0",
+    "it-length-prefixed-stream": "^1.1.5",
+    "libp2p": "^0.46.16"
   },
-	"ava": {
-		"files": [
-        "!tests/utils.js",
-        "!tests/setup.js"
+  "ava": {
+    "files": [
+      "!tests/utils.js",
+      "!tests/setup.js"
     ]
   }
 }
