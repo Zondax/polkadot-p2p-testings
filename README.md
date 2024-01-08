@@ -2,6 +2,23 @@
 
 This is a proof of concept take advantage of the already standard way of communicating with nodes : P2P mesages. Using libp2p we could feed a node with blocks, transactions, or even send incorrect transactions and verify their behaviors accross all the implementations. This doesn't require modifying the node in anyway and allow a good granularity of tests. Our PoC, just connect to a polkadot node and tests its ping interfaces (which is part of the spec).
 
+## Running tests
+
+You can run all the test from one command on the node you want. Currently we support the following nodes:
+    * Polkadot
+    * Gossamer
+
+Example: 
+```shell
+$ make test node=polkadot
+```
+Wait for the split screen to show and for the for the first blocks to be generated. (for gossamer, please use `node=gossamer`)
+
+Then you can start the test
+```
+$ npm start
+```
+
 ## Notes
 
 ### Monitor dev node

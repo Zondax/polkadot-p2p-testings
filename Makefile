@@ -1,7 +1,3 @@
-download:
-	wget https://github.com/paritytech/polkadot-sdk/releases/download/polkadot-v1.2.0/polkadot
-	wget https://github.com/paritytech/polkadot-sdk/releases/download/polkadot-v1.2.0/polkadot-execute-worker
-	wget https://github.com/paritytech/polkadot-sdk/releases/download/polkadot-v1.2.0/polkadot-prepare-worker
 
-start:
-	./polkadot --dev --port 30333
+test:
+	tmux new-session -s $(node) 'docker run --rm -p 30333:30333 $(node)' \; split-window -h 

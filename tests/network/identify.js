@@ -24,7 +24,6 @@ test('should recognize all the protocols', async t => {
     for (const protocol of result.protocols) {
         t.true(PROTOCOLS.includes(protocol), `protocol ${protocol} not recognized`)
     }
-
 })
 
 // List of protocols that should be present
