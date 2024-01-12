@@ -17,6 +17,7 @@
     "@libp2p/websockets": "^7.0.9",
     "@multiformats/multiaddr": "^12.1.7",
     "ava": "^5.0.0",
+    "axios": "^1.6.5",
     "it-length-prefixed-stream": "^1.1.5",
     "libp2p": "^0.46.16"
   },

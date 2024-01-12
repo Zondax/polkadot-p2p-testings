@@ -17,5 +17,6 @@ RUN chmod +x polkadot-prepare-worker
 
 
 EXPOSE 30333
+EXPOSE 9944
 
-CMD ["./polkadot", "--rpc-external", "--dev", "--base-path", "/tmp/wow/", "--node-key", "06c5b8ff1c930041b5f53f486cddf0ba8123ed02c1e5d72600f24e3e4e7c54fe", "--port", "30333"]
+CMD ["./polkadot", "--unsafe-rpc-external", "--rpc-methods", "unsafe", "--alice", "--force-authoring", "--chain", "/tmp/chainspec/zondax-local-raw-spec.json", "--base-path", "/tmp/wow/", "--node-key", "06c5b8ff1c930041b5f53f486cddf0ba8123ed02c1e5d72600f24e3e4e7c54fe", "--port", "30333"]

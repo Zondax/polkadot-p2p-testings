@@ -31,13 +31,13 @@ Even if it run locally.
 #### Polkadot
 ```
 $ docker build -t polkadot -f Dockerfile.polkadot .
-$ docker run -d -p 30333:30333 polkadot
+$ docker run -d -p 30333:30333 -p 9944:9944 -v ./misc/chainspec:/tmp/chainspec polkadot
 ```
 
 #### Gossamer
 ```
 $ docker build -t gossamer -f Dockerfile.gossamer .
-$ docker run -d -p 30333:30333 gossamer
+$ docker run -d -p 30333:30333 -p 9944:9944 gossamer
 ```
 
 ### Run the test
